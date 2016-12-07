@@ -1,0 +1,85 @@
+The game will be an space invader blaster game. It will be single player.
+The player will be able to choose between 3 different types of ships, each with
+unique characteristics involving speed, size, and damage. The objective is to
+score as many points and to last as long as you can against the army. As such, it is 
+not a "winnable" game but a game to get the highest score. The rules are to shoot down
+space invaders before they get to your side. You will appear as a ship on the bottom of
+the screen, and the invaders will appear from the top. They slowly descend down and will
+reach the bottom unless destroyed. You have a "health" bar that decreases when you take
+damage, either from the enemy bullets hitting your ship, or enemies passing the bottom.
+
+Resources exist in the form of items. Occasionally, items will drop that either boost speed,
+increase health, or increase speed. They last until the ship is damaged. Game state goes
+along with sequencing, in the sense that there are rounds to the game. Each round presents
+a wave of enemies with the same characteristic. However, when the round is over, the next
+wave will have a new characteristic, making each round more difficult. This could be
+stronger enemy bullets, tankier enemies, or faster descent. 
+
+The design for 11 entities is as follows:
+There will be 3 entities for the different type of ships, each with varying capabilities.
+There will be 3 entities for items that are dropped, each with different boosts.
+There will be 3 kinds of enemies, also with different capabilities.
+There will be 2 kinds of bullets, enemy bullets and player bullets.
+
+Entity
+
+Private Variables
+-private int xCoordinate
+-private int yCoordinate
+-private group image
+
+Functions
+public double getX()
+public double getY()
+public group getImage()
+public void translate(double x, double y)
+public void move(double x, double y)
+public abstract void setUpImage()
+
+
+Ship                       			BasicShip            	 QuickShip                   BigShip
+
+Private Variables
+-private int health					 -health = 100				-health = 50				-health = 150
+-private int speed             ->    -speed = 20  				-speed = 30					-speed = 10
+-private int bullet speed            -bullet speed = 75			-bullet speed = 100			-bullet speed = 50
+-private int bullet strength		 -bullet strength = 50		-bullet strength = 25		-bullet strength = 75
+
+Functions
+public void moveShip(KeyEvent event)
+public int getHealth()
+public int getBulletSpeed()
+public int getBulletStrength()
+
+Item									Health						Speed						Bullet
+
+Private Variables
+-private int health_buff				-heatlh_buff = 50			-health_buff = 0			-heatlh_buff = 0
+-private int speed_buff				->	-speed_buff = 0				-speed_buff = 50			-speed_buff = 0
+-private int bullet_strength_buff		-bullet_strength_buff = 0	-bullet_strength_buff = 0	-bullet_strength_bufff = 50
+
+Functions
+public abstract int getBuff()
+
+Enemy                				 BasicEnemy 				QuickEnemy             		BigEnemy
+
+Private Variables
+-private int health					 -health = 100				-health = 50				-health = 150
+-private int speed             ->    -speed = 100  				-speed = 150				-speed = 50
+-private int bullet speed            -bullet speed = 75			-bullet speed = 100			-bullet speed = 50
+-private int bullet strength		 -bullet strength = 50		-bullet strength = 25		-bullet strength = 75
+-private int bullet number			 -bullet number = 2			-bullet number = 1			-bullet number = 3
+
+Functions
+public abstract moving()
+
+Bullet					Player bullet				Enemy Bullet
+
+Private Variables
+-speed					-color = blue               -color = red
+-strength
+
+Functions
+public void bulletMotion()
+public int getSpeed()
+public int getStrength()
